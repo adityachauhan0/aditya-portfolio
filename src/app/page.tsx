@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import {
   Github,
@@ -11,11 +11,9 @@ import {
   ExternalLink,
   Trophy,
   Briefcase,
-  Star,
   Sun,
   Moon,
   GraduationCap,
-  ChevronRight,
   Download,
   Gamepad2,
   Sparkles,
@@ -197,7 +195,7 @@ function Chip({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Section({ id, title, icon, children }: any) {
+function Section({ id, title, icon, children }: { id: string; title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24">
       <div className="flex items-center gap-2 mb-4">
@@ -309,7 +307,8 @@ function TiltCard({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ProjectCard({ name, desc, stack, link }: any) {
+interface Project { name: string; desc?: string; stack?: string[]; link: string }
+function ProjectCard({ name, desc, stack, link }: Project) {
   return (
     <TiltCard>
       <a href={link} target="_blank" rel="noreferrer" className="group block">
